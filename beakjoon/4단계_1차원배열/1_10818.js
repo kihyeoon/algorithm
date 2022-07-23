@@ -5,7 +5,9 @@ const [firstLine, input] = require("fs")
   .split("\n");
 
 const count = Number(firstLine);
-const newArr = input.split(" ").map(Number);
-newArr.sort((a, b) => a - b);
+const arr = input.split(" ").map(Number);
 
-console.log(`${newArr[0]} ${newArr[count - 1]}`);
+// 오름차순으로 정렬
+arr.sort((a, b) => a - b);
+
+console.log(`${arr[0]} ${arr[count - 1]}`);
