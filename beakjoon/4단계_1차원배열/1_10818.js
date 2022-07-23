@@ -1,19 +1,11 @@
-let input = require("fs").readFileSync("/dev/stdin").toString().split("\n");
+const [firstLine, input] = require("fs")
+  .readFileSync("1_10818.txt")
+  .toString()
+  .trim()
+  .split("\n");
 
-let count = Number(input[0]);
-let numbers = input[1].split(" ").map((x) => Number(x));
+const count = Number(firstLine);
+const newArr = input.split(" ").map(Number);
+newArr.sort((a, b) => a - b);
 
-let max = numbers[0];
-let min = numbers[0];
-
-for (let i = 1; i < count; i++) {
-  if (max < numbers[i]) {
-    max = numbers[i];
-  }
-
-  if (min > numbers[i]) {
-    min = numbers[i];
-  }
-}
-
-console.log(`${min} ${max}`);
+console.log(`${newArr[0]} ${newArr[count - 1]}`);
