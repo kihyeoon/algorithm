@@ -1,9 +1,11 @@
-const input = require("fs").readFileSync("01_10872.txt").toString().trim();
+let input = require("fs").readFileSync("01_10872.txt").toString();
 
-let result = 1;
+function factorial(num) {
+  if (num <= 1) {
+    return 1;
+  }
 
-for (let i = input; i >= 1; i--) {
-  result *= i;
+  return num * factorial(num - 1);
 }
 
-console.log(result);
+console.log(factorial(input));
