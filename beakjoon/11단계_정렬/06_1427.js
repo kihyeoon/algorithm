@@ -23,3 +23,10 @@ const bubbleSort = function (arr) {
 };
 
 console.log(bubbleSort(input.split("")).join(""));
+
+console.log(
+  input
+    .split("")
+    .sort((a, b) => b - a)
+    .join("")
+);
