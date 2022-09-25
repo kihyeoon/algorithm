@@ -12,6 +12,7 @@ const [n, m] = firstLine.split(" ").map(Number);
 
 const list = input.slice(0, n);
 const inspect = input.slice(n);
+console.log(list);
 
 const obj = {};
 let result = 0;
