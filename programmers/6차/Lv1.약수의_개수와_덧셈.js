@@ -13,6 +13,7 @@ function solution(left, right) {
   return result;
 }
 
+//* 제곱근이 정수면 약수의 개수가 홀수, 아니면 짝수
 function solution(left, right) {
   var answer = 0;
   for (let i = left; i <= right; i++) {
