@@ -12,3 +12,9 @@ function solution(sizes) {
     Math.max(...resize.map((el) => el[1]))
   );
 }
+
+function solution(sizes) {
+  const maxWidth = Math.max(...sizes.map((card) => Math.min(...card)));
+  const maxHeight = Math.max(...sizes.map((card) => Math.max(...card)));
+  return maxWidth * maxHeight;
+}
