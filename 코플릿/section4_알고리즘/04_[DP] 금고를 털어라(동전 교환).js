@@ -26,3 +26,6 @@ function ocean(target, type) {
   // 해당 값을 리턴해 준다
   return bag[target];
 }
+
+let output = ocean(10, [1, 2, 5]);
+console.log(output); // 10
