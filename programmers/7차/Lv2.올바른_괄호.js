@@ -13,8 +13,7 @@ function solution(s) {
 function solution2(s) {
   let bracket = 0;
   for (const el of s) {
-    if (el === "(") bracket += 1;
-    if (el === ")") bracket -= 1;
+    bracket += el === "(" ? 1 : -1;
     if (bracket < 0) return false;
   }
   return bracket === 0;
