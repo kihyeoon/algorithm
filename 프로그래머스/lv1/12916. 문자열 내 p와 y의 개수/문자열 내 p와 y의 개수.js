@@ -1,7 +1,7 @@
 function solution(s) {
   let result = 0;
 
-  let ss = s.toLowerCase().split("");
+  let ss = s.toLowerCase();
 
   for (let i = 0; i < ss.length; i++) {
     if (ss[i] === "p") result += 1;
