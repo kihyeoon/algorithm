@@ -1,6 +1,5 @@
 function solution(num) {
-  let str = String(num);
-  let add = str
+  let add = String(num)
     .split("")
     .map(Number)
     .reduce((acc, cur) => acc + cur);
