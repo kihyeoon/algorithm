@@ -4,11 +4,10 @@ function solution(s, n) {
   const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   for (let i = 0; i < s.length; i++) {
     if (s[i] === " ") answer += " ";
-    else if (s[i].toLowerCase() === s[i]) {
-      answer += lower[(lower.indexOf(s[i]) + n) % 26];
-    } else if (s[i].toUpperCase() === s[i]) {
-      answer += upper[(upper.indexOf(s[i]) + n) % 26];
-    }
+    else
+      answer += lower.includes(s[i])
+        ? lower[(lower.indexOf(s[i]) + n) % 26]
+        : upper[(upper.indexOf(s[i]) + n) % 26];
   }
   return answer;
 }
