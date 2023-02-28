@@ -1,13 +1,11 @@
 function solution(n) {
-  let prev = 1;
-  let curr = 1;
-  let next = 0;
+  const dp = new Array(n + 1).fill(0);
+  dp[0] = 1;
+  dp[1] = 1;
 
   for (let i = 2; i <= n; i++) {
-    next = (prev + curr) % 1234567;
-    prev = curr;
-    curr = next;
+    dp[i] = (dp[i - 1] + dp[i - 2]) % 1234567;
   }
 
-  return curr;
+  return dp[n];
 }
