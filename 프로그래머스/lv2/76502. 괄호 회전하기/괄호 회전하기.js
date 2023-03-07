@@ -14,7 +14,7 @@ const balancedBrackets = (str) => {
       const top = stack.pop();
       const pair = opener[top];
       if (pair !== str[i]) {
-        return false;
+        return 0;
       }
     }
     if (!stack.length) fullBrackets++;
@@ -24,9 +24,9 @@ const balancedBrackets = (str) => {
 
 function solution(s) {
   for (let i = 0; i < s.length - 1; i++) {
-    let isBalanced = balancedBrackets(s.slice(i) + s.slice(0, i));
-    if (!isBalanced) continue;
-    return isBalanced;
+    let BalanceCount = balancedBrackets(s.slice(i) + s.slice(0, i));
+    if (!BalanceCount) continue;
+    return BalanceCount;
   }
   return 0;
 }
