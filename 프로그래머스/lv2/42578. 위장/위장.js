@@ -10,9 +10,6 @@ function solution(clothes) {
       : categoryObj[category].push(el[0]);
   });
 
-  console.log(categoryObj);
-  console.log(Object.entries(categoryObj));
-
   for (const [key, value] of Object.entries(categoryObj)) {
     answer *= value.length + 1;
   }
