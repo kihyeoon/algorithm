@@ -1,9 +1,9 @@
 function solution(n, left, right) {
-    var answer = [];
+  const ans = [];
 
-    for (let i = left; i <= right; i++) {
-        answer.push(Math.max(i % n, parseInt(i / n)) + 1)
-    }
+  while (left <= right) {
+    ans.push(Math.max(Math.floor(left / n), left++ % n) + 1);
+  }
 
-    return answer;
+  return ans;
 }
