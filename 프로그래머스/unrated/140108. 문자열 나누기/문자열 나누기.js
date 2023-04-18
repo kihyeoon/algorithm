@@ -6,8 +6,7 @@ function solution(s) {
 
   for (let i = 0; i < s.length; i++) {
     if (x === "") x = s[i];
-    if (s[i] === x) countX++;
-    else if (s[i] !== x) countNotX++;
+    s[i] === x ? countX++ : countNotX++;
     if (countX === countNotX) {
       answer++;
       x = "";
