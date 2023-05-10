@@ -1,17 +1,34 @@
+function dateToNum(date) {
+  return date
+    .split(".")
+    .map(Number)
+    .reduce((acc, cur, idx) => {
+      if (idx === 0) {
+        return cur * 12 * 28 + acc;
+      } else if (idx === 1) {
+        return cur * 28 + acc;
+      } else {
+        return cur + acc;
+      }
+    }, 0);
+}
+
 function solution(today, terms, privacies) {
-  let answer = [];
-  let [year, month, date] = today.split(".").map(Number);
-  let todates = year * 12 * 28 + month * 28 + date;
-  let t = {};
-  terms.forEach((e) => {
-    let [a, b] = e.split(" ");
-    t[a] = Number(b);
+  const termObj = {};
+  let todayDate = dateToNum(today);
+
+  terms.map((el) => {
+    let newEl = el.split(" ");
+    termObj[newEl[0]] = Number(newEl[1]);
   });
-  privacies.forEach((e, i) => {
-    let [day, term] = e.split(" ");
-    day = day.split(".").map(Number);
-    let dates = day[0] * 12 * 28 + day[1] * 28 + day[2] + t[term] * 28;
-    if (dates <= todates) answer.push(i + 1);
+
+  let newPri = privacies.map((el) => {
+    let privacy = el.split(" ");
+    let date = dateToNum(privacy[0]);
+    return date + termObj[privacy[1]] * 28;
   });
-  return answer;
+
+  return newPri
+    .map((el, idx) => (el <= todayDate ? idx + 1 : null))
+    .filter((el) => !!el);
 }
