@@ -1,23 +1,30 @@
 function solution(priorities, location) {
-    let order = 0;
-    let target_index = location; // 목표 프로세스의 위치를 추적하는 변수
-    let first = -1;
+  // 각 프로세스를 { location, priority } 형태의 객체로 변환하여 큐에 저장합니다.
+  let queue = priorities.map((priority, index) => {
+    return {
+      location: index,
+      priority: priority,
+    };
+  });
 
-    while (priorities.length > 0) { 
-        first = priorities.shift(); // 첫 번째 프로세스를 꺼낸다
-        if (priorities.some((value, index) => value > first)) { // 우선순위가 더 높은 프로세스가 있는지 확인한다
-            priorities.push(first); // 우선순위가 더 높은 프로세스가 있다면 꺼낸 프로세스를 다시 큐에 넣는다
-        } else {
-            order++; // 우선순위가 더 높은 프로세스가 없다면 해당 프로세스를 실행하고 순서를 증가시킨다
-            if (target_index === 0) {
-                break; // 목표 프로세스가 실행되었다면 반복문을 종료한다
-            }
-        }
-        if (target_index === 0) {
-            target_index = priorities.length - 1; // 목표 프로세스가 큐의 마지막으로 이동한다
-        } else {
-            target_index--; // 목표 프로세스의 위치를 하나 줄인다
-        }
+  let order = 0;
+
+  while (queue.length > 0) {
+    // 첫 번째 프로세스를 꺼냅니다.
+    let currentProcess = queue.shift();
+
+    // 꺼낸 프로세스의 우선순위가 큐 내 다른 프로세스의 우선순위보다 높은지 확인합니다.
+    if (queue.some((process) => process.priority > currentProcess.priority)) {
+      // 꺼낸 프로세스의 우선순위가 낮다면, 다시 큐의 끝에 넣습니다.
+      queue.push(currentProcess);
+    } else {
+      // 꺼낸 프로세스의 우선순위가 가장 높다면, 프로세스를 실행하고 순서를 증가시킵니다.
+      order++;
+
+      // 만약 꺼낸 프로세스가 찾는 프로세스라면, 실행 순서를 반환하고 종료합니다.
+      if (currentProcess.location === location) {
+        return order;
+      }
     }
-    return order;
+  }
 }
